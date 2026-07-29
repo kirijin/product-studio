@@ -53,7 +53,7 @@ def run(manifest, progress_callback=None):
     # Error log path
     error_log = Path(manifest["session_dir"]) / "errors_phase1.log"
 
-    session = new_session("briaai/RMBG-2.0")
+    session = new_session("u2net")
     images = manifest.get("images", [])
     total = len(images)
 

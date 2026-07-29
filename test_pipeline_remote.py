@@ -32,7 +32,11 @@ manifest = {
 }
 
 # Phase 1: remove background
-bg_remove_run({"product_image_path": product_path, "output_dir": session_dir})
+bg_remove_run({
+    "product_image_path": product_path,
+    "session_dir": session_dir,
+    "output_dir": session_dir,
+})
 print("   Phase1 (bg removal): done")
 
 # Phase 3: render
