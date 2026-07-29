@@ -18,10 +18,10 @@ echo [1/8] System info...
 (
   echo === SYSTEM ===
   systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type" /C:"Total Physical Memory" /C:"Available Physical Memory"
+  echo CPU: 
+  for /f "tokens=2 delims==" %%a in ('wmic cpu get name /value 2^>nul') do echo %%a
+  if errorlevel 1 echo CPU detection unavailable (wmic not present)
 ) >> "%REPORT%" 2>&1
-echo CPU: >> "%REPORT%"
-wmic cpu get name 2>>"%REPORT%" | findstr /V "Name" >> "%REPORT%" 2>&1
-echo. >> "%REPORT%"
 
 :: ── 2. GPU ──────────────────────────────────────────────
 echo [2/8] GPU info...
