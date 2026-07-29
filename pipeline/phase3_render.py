@@ -58,7 +58,7 @@ def _load_pipeline():
     vram_gb = 0
     use_cpu_offload = False
     if device == "cuda":
-        vram_gb = torch.cuda.get_device_properties(0).total_mem / 1e9
+        vram_gb = torch.cuda.get_device_properties(0).total_memory / 1e9
         if vram_gb < 11:
             use_cpu_offload = True
             print(f"  VRAM={vram_gb:.1f}GB — enabling CPU offload to prevent OOM")
