@@ -12,14 +12,6 @@ MODELS_DIR = Path(__file__).resolve().parent.parent / "models" / "cache"
 
 REQUIRED_MODELS = [
     {
-        "id": "rembg",
-        "type": "auto",
-        "repo_id": "briaai/RMBG-2.0",
-        "files": ["model.pth", "config.json"],
-        "size_gb": 0.2,
-        "description": "Background removal model",
-    },
-    {
         "id": "sdxl-base",
         "type": "diffusers",
         "repo_id": "stabilityai/stable-diffusion-xl-base-1.0",
