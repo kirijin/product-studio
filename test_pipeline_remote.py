@@ -14,7 +14,7 @@ print(f"   OK: {result.size} {result.mode}")
 
 print("\n2. Loading SDXL pipeline...")
 from pipeline.phase3_render import _load_pipeline
-pipe = _load_pipeline()
+pipe, _ = _load_pipeline()
 print(f"   OK: {type(pipe).__name__}")
 
 print("\n3. Running full pipeline (phase1 + phase3)...")

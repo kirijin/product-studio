@@ -40,7 +40,7 @@ def _load_pipeline():
     global _pipe, _controlnet, _canny_processor, _depth_processor
 
     if _pipe is not None:
-        return _pipe
+        return _pipe, False
 
     import torch
     from diffusers import (
@@ -104,7 +104,7 @@ def _load_pipeline():
     _canny_processor = CannyDetector()
     _depth_processor = MidasDetector.from_pretrained("lllyasviel/Annotators")
 
-    return _pipe
+    return _pipe, use_cpu_offload
 
 
 # ── Helpers ─────────────────────────────────────────────────────────────
@@ -273,7 +273,7 @@ def run(manifest, progress_callback=None):
     output_size = config.get("output_size", "1024")
 
     # Load pipeline
-    pipe = _load_pipeline()
+    pipe, use_cpu_offload = _load_pipeline()
 
     images = manifest.get("images", [])
     total = len(images)
@@ -284,7 +284,6 @@ def run(manifest, progress_callback=None):
 
     # WDDM guard: reduce steps if VRAM < 10GB (Windows GPU watchdog)
     inference_steps = 25 if not use_cpu_offload else 20
-    pipe = _load_pipeline()
 
     for idx, img_entry in enumerate(images):
         cutout_path = Path(img_entry.get("cutout_path", ""))
