@@ -49,7 +49,7 @@ def _load_pipeline():
         AutoencoderKL,
         EulerDiscreteScheduler,
     )
-    from controlnet_aux import CannyDetector, ZoeDetector
+    from controlnet_aux import CannyDetector, MidasDetector
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     dtype = torch.float16 if device == "cuda" else torch.float32
@@ -102,7 +102,7 @@ def _load_pipeline():
 
     # Processors for ControlNet condition images
     _canny_processor = CannyDetector()
-    _depth_processor = ZoeDetector()
+    _depth_processor = MidasDetector.from_pretrained("lllyasviel/Annotators")
 
     return _pipe
 
