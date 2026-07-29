@@ -28,19 +28,19 @@ warnings = []
 
 def ok(msg):
     checks.append(("PASS", msg))
-    print(f"  {GREEN}✓{RESET} {msg}")
+    print(f"  {GREEN}[OK]{RESET} {msg}")
 
 
 def warn(msg):
     checks.append(("WARN", msg))
     warnings.append(msg)
-    print(f"  {YELLOW}⚠{RESET} {msg}")
+    print(f"  {YELLOW}[!]{RESET} {msg}")
 
 
 def fail(msg):
     checks.append(("FAIL", msg))
     failures.append(msg)
-    print(f"  {RED}✗{RESET} {msg}")
+    print(f"  {RED}[X]{RESET} {msg}")
 
 
 def check_python():
