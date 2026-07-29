@@ -1,11 +1,8 @@
 gradio>=5.0
 pillow>=10.0
 rembg[gpu]>=2.0
-torch>=2.1
-torchvision
 diffusers>=0.30
 transformers
-xformers
 accelerate
 controlnet-aux>=0.0.7
 opencv-python-headless

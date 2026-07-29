@@ -146,12 +146,23 @@ def _render_label(image, text, style_name, position, mask_for_placement):
     """
     style = style_module.LABEL_STYLES.get(style_name, style_module.LABEL_STYLES["badge"])
 
-    # Font
-    font_path = style_module.FONT_PATHS.get(style["font_family"])
-    if font_path:
-        font_path_resolved = Path(__file__).resolve().parent.parent / font_path
-        if font_path_resolved.exists():
-            font = ImageFont.truetype(str(font_path_resolved), style["font_size"])
+    # Font — load from variable font with weight axis
+    font_family_key = style["font_family"]
+    fw = style_module.FONT_WEIGHTS.get(font_family_key)
+    if fw:
+        family = fw.get("family", "OpenSans")
+        font_path = style_module.FONT_PATHS.get(family)
+        if font_path:
+            font_path_resolved = Path(__file__).resolve().parent.parent / font_path
+            if font_path_resolved.exists():
+                font = ImageFont.truetype(str(font_path_resolved), style["font_size"])
+                # Try to set weight axis (variable font)
+                try:
+                    font.set_variation_by_axes([fw["weight"]])
+                except Exception:
+                    pass  # fall back to default weight
+            else:
+                font = ImageFont.load_default()
         else:
             font = ImageFont.load_default()
     else:

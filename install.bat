@@ -36,6 +36,17 @@ set HF_HUB_CACHE=%~dp0models\cache\hub
 
 :: Install Python packages
 echo [2/5] Installing Python packages (this may take 5-10 minutes)...
+
+:: PyTorch with CUDA (NVIDIA GPU required)
+echo   Installing PyTorch with CUDA support...
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+if %errorlevel% neq 0 (
+    echo [WARNING] CUDA PyTorch install failed, trying CPU fallback...
+    pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+)
+
+:: Remaining dependencies
+echo   Installing remaining packages...
 pip install -r requirements.txt
 if %errorlevel% neq 0 (
     echo [ERROR] pip install failed. Check your internet connection.

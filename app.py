@@ -280,7 +280,7 @@ def on_new_session():
 
 
 def build_ui():
-    with gr.Blocks(title=APP_TITLE, theme=gr.themes.Soft()) as app:
+    with gr.Blocks(title=APP_TITLE) as app:
         # State
         manifest_state = gr.State(new_session)
 
@@ -522,4 +522,5 @@ if __name__ == "__main__":
         server_port=7860,
         show_error=True,
         quiet=False,
+        theme=gr.themes.Soft(),
     )

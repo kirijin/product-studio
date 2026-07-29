@@ -7,25 +7,20 @@ from pathlib import Path
 
 FONTS_DIR = Path(__file__).resolve().parent / "fonts"
 
-# Open Sans — 5 weights used in styles
+# Open Sans — variable font (replaces all static weights)
 OPEN_SANS_URL = (
-    "https://github.com/google/fonts/raw/main/ofl/opensans/"
+    "https://raw.githubusercontent.com/google/fonts/main/ofl/opensans/"
 )
 OPEN_SANS_FILES = [
-    "OpenSans-Light.ttf",
-    "OpenSans-Regular.ttf",
-    "OpenSans-SemiBold.ttf",
-    "OpenSans-Bold.ttf",
-    "OpenSans-ExtraBold.ttf",
+    "OpenSans[wdth,wght].ttf",
 ]
 
-# Playfair Display — premium serif
+# Playfair Display — variable font
 PLAYFAIR_URL = (
-    "https://github.com/google/fonts/raw/main/ofl/playfairdisplay/"
+    "https://raw.githubusercontent.com/google/fonts/main/ofl/playfairdisplay/"
 )
 PLAYFAIR_FILES = [
-    "PlayfairDisplay-Regular.ttf",
-    "PlayfairDisplay-Bold.ttf",
+    "PlayfairDisplay[wght].ttf",
 ]
 
 

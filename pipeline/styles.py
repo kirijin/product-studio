@@ -89,13 +89,19 @@ LABEL_STYLES = {
 }
 
 FONT_PATHS = {
-    "OpenSans-Light": "fonts/OpenSans-Light.ttf",
-    "OpenSans-Regular": "fonts/OpenSans-Regular.ttf",
-    "OpenSans-SemiBold": "fonts/OpenSans-SemiBold.ttf",
-    "OpenSans-Bold": "fonts/OpenSans-Bold.ttf",
-    "OpenSans-ExtraBold": "fonts/OpenSans-ExtraBold.ttf",
-    "PlayfairDisplay-Regular": "fonts/PlayfairDisplay-Regular.ttf",
-    "PlayfairDisplay-Bold": "fonts/PlayfairDisplay-Bold.ttf",
+    "OpenSans": "fonts/OpenSans[wdth,wght].ttf",
+    "PlayfairDisplay": "fonts/PlayfairDisplay[wght].ttf",
+}
+
+# Weight mapping for variable fonts
+FONT_WEIGHTS = {
+    "OpenSans-Light": {"weight": 300},
+    "OpenSans-Regular": {"weight": 400},
+    "OpenSans-SemiBold": {"weight": 600},
+    "OpenSans-Bold": {"weight": 700},
+    "OpenSans-ExtraBold": {"weight": 800},
+    "PlayfairDisplay-Regular": {"weight": 400, "family": "PlayfairDisplay"},
+    "PlayfairDisplay-Bold": {"weight": 700, "family": "PlayfairDisplay"},
 }
 
 POSITION_OPTIONS = [
