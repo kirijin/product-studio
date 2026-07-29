@@ -89,9 +89,9 @@ def _load_pipeline():
     )
     _pipe.scheduler = EulerDiscreteScheduler.from_config(_pipe.scheduler.config)
 
-    # Memory optimizations
+    # Memory optimizations (no xformers dependency)
     if device == "cuda":
-        _pipe.enable_xformers_memory_efficient_attention()
+        _pipe.enable_attention_slicing()
         if use_cpu_offload:
             _pipe.enable_model_cpu_offload()
         else:
