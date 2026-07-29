@@ -58,7 +58,7 @@ def check_cuda():
             cuda_ver = torch.version.cuda or "unknown"
             device_count = torch.cuda.device_count()
             device_name = torch.cuda.get_device_name(0)
-            vram_total = torch.cuda.get_device_properties(0).total_mem
+            vram_total = torch.cuda.get_device_properties(0).total_memory
             vram_gb = vram_total / 1e9
             ok(f"CUDA {cuda_ver} — {device_name} ({vram_gb:.1f} GB VRAM, {device_count} device(s))")
 
@@ -174,14 +174,14 @@ def run_all():
     if warnings:
         print(f"  {YELLOW}{len(warnings)} warning(s):{RESET}")
         for w in warnings[:3]:
-            print(f"    {YELLOW}⚠{RESET} {w}")
+            print(f"    {YELLOW}[!]{RESET} {w}")
         if len(warnings) > 3:
             print(f"    ... and {len(warnings) - 3} more")
 
     if failures:
         print(f"  {RED}{len(failures)} failure(s) — fix before running:{RESET}")
         for f in failures:
-            print(f"    {RED}✗{RESET} {f}")
+            print(f"    {RED}[X]{RESET} {f}")
 
     print("=" * 50)
 
